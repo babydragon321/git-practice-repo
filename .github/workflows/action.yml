@@ -1,0 +1,44 @@
+name: My Workflow
+
+on: [push]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Print Hello
+      run: echo "Hello"
+    - name: Print Ubuntu version
+      run: lsb_release -a
+    - name: Print commit SHA
+      run: echo ${{ github.sha }}
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Print all files
+      run: |
+        cat 1.txt
+        cat 2.txt
+        cat 3.txt
+        cat 4.txt
+    - name: Run test.sh
+      run: bash test.sh
+
+  job3:
+    runs-on: ubuntu-latest
+    env:
+      FIRST_NAME: YourFirstName
+    steps:
+    - name: Print First Name
+      run: echo $FIRST_NAME
+    - name: Print Last Name
+      run: |
+        LAST_NAME="YourLastName"
+        echo $LAST_NAME
+    - name: Print Phone Number
+      env:
+        PHONE: ${{ secrets.PHONE_NUMBER }}
+      run: echo $PHONE
