@@ -30,13 +30,13 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     env:
-      FIRST_NAME: YourFirstName
+      FIRST_NAME: BAR
     steps:
     - name: Print First Name
       run: echo $FIRST_NAME
     - name: Print Last Name
       run: |
-        LAST_NAME="YourLastName"
+        LAST_NAME="ITA"
         echo $LAST_NAME
     - name: Print Phone Number
       env:
